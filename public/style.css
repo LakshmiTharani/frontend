@@ -1,0 +1,589 @@
+/* Custom animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 212, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 212, 0, 0.6);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-twinkle {
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a3a 100%);
+  color: #ffffff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(15, 15, 35, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 212, 0, 0.2);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffd400;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  background: rgba(255, 212, 0, 0.1);
+  color: #ffd400;
+}
+
+.user-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.btn {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(45deg, #ffd400, #ffed4e);
+  color: #0f0f23;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 212, 0, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #ffd400;
+  border: 2px solid #ffd400;
+}
+
+.btn-secondary:hover {
+  background: #ffd400;
+  color: #0f0f23;
+}
+
+/* Main content */
+.main-content {
+  margin-top: 80px;
+  min-height: calc(100vh - 80px);
+  position: relative;
+}
+
+/* Welcome section */
+.welcome-section {
+  text-align: center;
+  padding: 4rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.welcome-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, #ffd400, #ffffff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.welcome-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+}
+
+.welcome-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* VR Scene container */
+.vr-container {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .a-scene {
+    height: 100vh !important;
+  }
+  
+  .header {
+    padding: 1rem;
+  }
+  
+  .nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .nav-links {
+    gap: 1rem;
+  }
+  
+  .welcome-title {
+    font-size: 2rem;
+  }
+  
+  .welcome-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .user-controls {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* VR/AR specific styles */
+.vr-overlay {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+.vr-overlay button {
+  pointer-events: all;
+}
+
+.vr-ui {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1rem;
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+}
+
+.vr-control {
+  background: rgba(255, 212, 0, 0.2);
+  border: 1px solid #ffd400;
+  color: #ffd400;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.vr-control:hover {
+  background: rgba(255, 212, 0, 0.4);
+}
+
+.vr-control.active {
+  background: #ffd400;
+  color: #0f0f23;
+}
+
+/* Chat system */
+.chat-container {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 300px;
+  height: 400px;
+  background: rgba(15, 15, 35, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 212, 0, 0.3);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  z-index: 500;
+  transition: all 0.3s ease;
+}
+
+.chat-container.minimized {
+  height: 50px;
+  overflow: hidden;
+}
+
+.chat-header {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 212, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.chat-title {
+  font-weight: bold;
+  color: #ffd400;
+}
+
+.chat-toggle {
+  background: none;
+  border: none;
+  color: #ffd400;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 212, 0, 0.5) rgba(0, 0, 0, 0.1);
+}
+
+.chat-message {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.chat-message .username {
+  font-weight: bold;
+  color: #ffd400;
+  font-size: 0.9rem;
+}
+
+.chat-message .message {
+  margin-top: 0.2rem;
+  font-size: 0.9rem;
+}
+
+.chat-message .timestamp {
+  font-size: 0.7rem;
+  opacity: 0.6;
+  margin-top: 0.2rem;
+}
+
+.chat-input-container {
+  padding: 1rem;
+  border-top: 1px solid rgba(255, 212, 0, 0.2);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chat-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 212, 0, 0.3);
+  border-radius: 15px;
+  padding: 0.5rem;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.chat-input:focus {
+  outline: none;
+  border-color: #ffd400;
+}
+
+.chat-send {
+  background: #ffd400;
+  color: #0f0f23;
+  border: none;
+  border-radius: 15px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Custom scrollbar for chat */
+.chat-messages::-webkit-scrollbar {
+  width: 4px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: rgba(255, 212, 0, 0.5);
+  border-radius: 2px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 212, 0, 0.7);
+}
+
+/* Session list */
+.sessions-panel {
+  position: fixed;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 250px;
+  max-height: 400px;
+  background: rgba(15, 15, 35, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 212, 0, 0.3);
+  border-radius: 15px;
+  overflow: hidden;
+  z-index: 500;
+}
+
+.sessions-header {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 212, 0, 0.2);
+  font-weight: bold;
+  color: #ffd400;
+}
+
+.sessions-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.session-item {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 212, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.session-item:hover {
+  background: rgba(255, 212, 0, 0.1);
+}
+
+.session-name {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.session-info {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.session-users {
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  color: #ffd400;
+}
+
+/* Loading states */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid rgba(255, 212, 0, 0.3);
+  border-top: 3px solid #ffd400;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error states */
+.error {
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 1rem;
+}
+
+.success {
+  color: #51cf66;
+  background: rgba(81, 207, 102, 0.1);
+  border: 1px solid rgba(81, 207, 102, 0.3);
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 1rem;
+}
+
+/* User list */
+.users-online {
+  position: fixed;
+  top: 100px;
+  right: 2rem;
+  width: 200px;
+  background: rgba(15, 15, 35, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 212, 0, 0.3);
+  border-radius: 15px;
+  padding: 1rem;
+  z-index: 400;
+}
+
+.users-title {
+  font-weight: bold;
+  color: #ffd400;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.user-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.user-status {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #51cf66;
+}
+
+.user-status.offline {
+  background: #868e96;
+}
+
+.user-name {
+  font-size: 0.9rem;
+  flex: 1;
+}
+
+/* Smooth transitions for mode switches */
+.page-transition {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Form styles */
+.auth-form {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(15, 15, 35, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 212, 0, 0.3);
+  border-radius: 15px;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #ffd400;
+  font-weight: bold;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 212, 0, 0.3);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #ffd400;
+  box-shadow: 0 0 10px rgba(255, 212, 0, 0.3);
+}
+
+/* Hidden by default for non-VR users */
+.vr-only {
+  display: none;
+}
+
+/* Show VR elements when in VR mode */
+body.vr-mode .vr-only {
+  display: block;
+}
+
+body.vr-mode .non-vr {
+  display: none;
+}
